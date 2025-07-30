@@ -1,0 +1,1 @@
+Platform to view nearby shelters, food banks, and medical aid during emergencies.
