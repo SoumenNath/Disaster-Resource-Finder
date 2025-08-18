@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using DisasterResourceFinder.Data;
 using DisasterResourceFinder.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DisasterResourceFinder.Controllers
 {
@@ -17,7 +18,9 @@ namespace DisasterResourceFinder.Controllers
         }
 
         // GET: api/resources?city=Tor&type=shelt&page=1&pageSize=5&sort=city&order=desc
+        // ✅ Anyone can search/list
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<object>> GetResources(
             [FromQuery] string? city,
             [FromQuery] string? type,
@@ -80,6 +83,7 @@ namespace DisasterResourceFinder.Controllers
 
         // GET: api/resources/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Resource>> GetResource(int id)
         {
             var resource = await _context.Resources.FindAsync(id);
@@ -89,6 +93,7 @@ namespace DisasterResourceFinder.Controllers
 
         // POST: api/resources
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Resource>> CreateResource(Resource resource)
         {
             resource.LastUpdated = DateTime.UtcNow;
@@ -99,6 +104,7 @@ namespace DisasterResourceFinder.Controllers
 
         // PUT: api/resources/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateResource(int id, Resource updatedResource)
         {
             if (id != updatedResource.Id) return BadRequest();
@@ -127,6 +133,7 @@ namespace DisasterResourceFinder.Controllers
 
         // DELETE: api/resources/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteResource(int id)
         {
             var resource = await _context.Resources.FindAsync(id);

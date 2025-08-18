@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using DisasterResourceFinder.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Reflection.Emit;
 namespace DisasterResourceFinder.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
            : base(options) { }
@@ -11,6 +14,36 @@ namespace DisasterResourceFinder.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Seed roles
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+                new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
+            );
+
+            // Seed admin user
+            var hasher = new PasswordHasher<IdentityUser>();
+            var adminUser = new IdentityUser
+            {
+                Id = "100",
+                UserName = "admin@demo.com",
+                NormalizedUserName = "ADMIN@DEMO.COM",
+                Email = "admin@demo.com",
+                NormalizedEmail = "ADMIN@DEMO.COM",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString("D")
+            };
+            adminUser.PasswordHash = hasher.HashPassword(adminUser, "Admin123!");
+
+            modelBuilder.Entity<IdentityUser>().HasData(adminUser);
+
+            // Seed the UserRole relationship
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = "1", // Admin role
+                    UserId = "100" // Admin user
+                }
+            );
 
             modelBuilder.Entity<Resource>().HasData(
                 new Resource { Id = 1, Name = "Toronto Central Shelter", Type = "Shelter", Address = "123 King St W", City = "Toronto", PostalCode = "M5H 1A1", Latitude = 43.6532, Longitude = -79.3832, Phone = "123-456-7890", WebsiteUrl = "https://torontocentralshelter.example.com", OpeningHours = "24/7", Capacity = 150, IsWheelchairAccessible = true, IsPetFriendly = false, LastUpdated = DateTime.UtcNow },

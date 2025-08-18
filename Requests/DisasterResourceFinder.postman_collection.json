@@ -1,7 +1,20 @@
 {
+    "email": "user1@test.com",
+    "password": "User@123"
+}
+{
+    "Id": 5,
+    "Name": "Halifax Aid Depot",
+    "Type": "Food",
+    "City": "Halifax",
+    "PostalCode": "B3J 1Z1",
+    "Address": "13 Barrington St"
+}
+
+
+{
     "info": {
         "name": "DisasterResourceFinder API",
-        "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
         "description": "CRUD and advanced GET endpoints for DisasterResourceFinder",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -12,10 +25,10 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "https://localhost:5001/api/resources?city=Tor&type=shelt&page=1&pageSize=5&sort=city&order=desc",
+                    "raw": "https://localhost:44395/api/resources?city=Tor&type=shelt&page=1&pageSize=5&sort=city&order=desc",
                     "protocol": "https",
                     "host": [ "localhost" ],
-                    "port": "5001",
+                    "port": "44395",
                     "path": [ "api", "resources" ],
                     "query": [
                         {
@@ -52,10 +65,10 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                    "raw": "https://localhost:5001/api/resources/1",
+                    "raw": "https://localhost:44395/api/resources/1",
                     "protocol": "https",
                     "host": [ "localhost" ],
-                    "port": "5001",
+                    "port": "44395",
                     "path": [ "api", "resources", "1" ]
                 }
             }
@@ -75,10 +88,10 @@
                     "raw": "{\n  \"name\": \"New Shelter\",\n  \"type\": \"Shelter\",\n  \"address\": \"123 Main St\",\n  \"city\": \"Toronto\",\n  \"postalCode\": \"M5H1A1\",\n  \"latitude\": 43.65,\n  \"longitude\": -79.38,\n  \"phone\": \"123-456-7890\",\n  \"websiteUrl\": \"https://newshelter.example.com\",\n  \"openingHours\": \"24/7\",\n  \"capacity\": 100,\n  \"isWheelchairAccessible\": true,\n  \"isPetFriendly\": false\n}"
                 },
                 "url": {
-                    "raw": "https://localhost:5001/api/resources",
+                    "raw": "https://localhost:44395/api/resources",
                     "protocol": "https",
                     "host": [ "localhost" ],
-                    "port": "5001",
+                    "port": "44395",
                     "path": [ "api", "resources" ]
                 }
             }
@@ -98,10 +111,10 @@
                     "raw": "{\n  \"id\": 1,\n  \"name\": \"Updated Shelter\",\n  \"type\": \"Shelter\",\n  \"address\": \"123 Main St\",\n  \"city\": \"Toronto\",\n  \"postalCode\": \"M5H1A1\",\n  \"latitude\": 43.65,\n  \"longitude\": -79.38,\n  \"phone\": \"123-456-7890\",\n  \"websiteUrl\": \"https://updatedshelter.example.com\",\n  \"openingHours\": \"24/7\",\n  \"capacity\": 120,\n  \"isWheelchairAccessible\": true,\n  \"isPetFriendly\": true\n}"
                 },
                 "url": {
-                    "raw": "https://localhost:5001/api/resources/1",
+                    "raw": "https://localhost:44395/api/resources/1",
                     "protocol": "https",
                     "host": [ "localhost" ],
-                    "port": "5001",
+                    "port": "44395",
                     "path": [ "api", "resources", "1" ]
                 }
             }
@@ -112,13 +125,14 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                    "raw": "https://localhost:5001/api/resources/1",
+                    "raw": "https://localhost:44395/api/resources/1",
                     "protocol": "https",
                     "host": [ "localhost" ],
-                    "port": "5001",
+                    "port": "44395",
                     "path": [ "api", "resources", "1" ]
                 }
             }
         }
     ]
 }
+

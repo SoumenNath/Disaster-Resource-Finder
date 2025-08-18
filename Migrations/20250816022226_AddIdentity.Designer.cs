@@ -4,6 +4,7 @@ using DisasterResourceFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DisasterResourceFinder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250816022226_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,7 +98,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Toronto",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7922),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3920),
                             Latitude = 43.653199999999998,
                             Longitude = -79.383200000000002,
                             Name = "Toronto Central Shelter",
@@ -113,7 +116,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Vancouver",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7926),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3923),
                             Latitude = 49.282699999999998,
                             Longitude = -123.1207,
                             Name = "Vancouver Food Bank",
@@ -131,7 +134,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Calgary",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7928),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3926),
                             Latitude = 51.044699999999999,
                             Longitude = -114.0719,
                             Name = "Calgary Emergency Clinic",
@@ -149,7 +152,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Montreal",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7930),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3927),
                             Latitude = 45.5017,
                             Longitude = -73.567300000000003,
                             Name = "Montreal Relief Center",
@@ -167,7 +170,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Halifax",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = false,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7932),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3929),
                             Latitude = 44.648800000000001,
                             Longitude = -63.575200000000002,
                             Name = "Halifax Aid Depot",
@@ -185,7 +188,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Ottawa",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7934),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3931),
                             Latitude = 45.421500000000002,
                             Longitude = -75.697199999999995,
                             Name = "Ottawa Medical Unit",
@@ -203,7 +206,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Winnipeg",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7936),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3933),
                             Latitude = 49.895099999999999,
                             Longitude = -97.138400000000004,
                             Name = "Winnipeg Crisis Shelter",
@@ -221,7 +224,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Victoria",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7938),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3935),
                             Latitude = 48.428400000000003,
                             Longitude = -123.3656,
                             Name = "Victoria Community Kitchen",
@@ -239,7 +242,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Regina",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7940),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3937),
                             Latitude = 50.4452,
                             Longitude = -104.6189,
                             Name = "Regina Health Services",
@@ -257,7 +260,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Edmonton",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7942),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3938),
                             Latitude = 53.546100000000003,
                             Longitude = -113.49379999999999,
                             Name = "Edmonton Support Hub",
@@ -275,7 +278,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Quebec City",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7943),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3940),
                             Latitude = 46.813899999999997,
                             Longitude = -71.208200000000005,
                             Name = "Quebec City Food Assistance",
@@ -293,7 +296,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Saskatoon",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(7945),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3942),
                             Latitude = 52.133200000000002,
                             Longitude = -106.67,
                             Name = "Saskatoon Urgent Care",
@@ -311,7 +314,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Toronto",
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(8048),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3944),
                             Latitude = 43.655000000000001,
                             Longitude = -79.384,
                             Name = "Toronto Downtown Food Hub",
@@ -329,7 +332,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Vancouver",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(8050),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3946),
                             Latitude = 49.280000000000001,
                             Longitude = -123.117,
                             Name = "Vancouver Emergency Shelter",
@@ -347,7 +350,7 @@ namespace DisasterResourceFinder.Migrations
                             City = "Montreal",
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 18, 22, 24, 4, 878, DateTimeKind.Utc).AddTicks(8052),
+                            LastUpdated = new DateTime(2025, 8, 16, 2, 22, 26, 1, DateTimeKind.Utc).AddTicks(3948),
                             Latitude = 45.503999999999998,
                             Longitude = -73.576999999999998,
                             Name = "Montreal Medical Unit",
@@ -384,20 +387,6 @@ namespace DisasterResourceFinder.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -488,24 +477,6 @@ namespace DisasterResourceFinder.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "100",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "009d92ff-daab-47e2-89cf-e7f8b35417ed",
-                            Email = "admin@demo.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@DEMO.COM",
-                            NormalizedUserName = "ADMIN@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMoVrCuLWQSntHQp6AGx8CrRqie7EU941GQRAHPi+UWfhBWsSrDf3l1679oliYVJ/Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "371e5146-05e8-41d0-a35c-fc81fb902580",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@demo.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -568,13 +539,6 @@ namespace DisasterResourceFinder.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "100",
-                            RoleId = "1"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
