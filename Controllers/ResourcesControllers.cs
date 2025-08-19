@@ -143,5 +143,88 @@ namespace DisasterResourceFinder.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+        // GET: api/resources/nearby?lat=43.651&lng=-79.383&radiusKm=5
+        [HttpGet("nearby")]
+        public async Task<ActionResult<IEnumerable<ResourceNearbyDto>>> GetNearbyResources(
+        double lat,
+        double lng,
+        double radiusKm = 5,
+        string? city = null,
+        string? type = null,
+        int page = 1,
+        int pageSize = 10,
+        string? sort = "distance",
+        string? order = "asc")
+        {
+            var query = _context.Resources.AsQueryable();
+
+            // Apply filters
+            if (!string.IsNullOrEmpty(city))
+                query = query.Where(r => r.City.ToLower().Contains(city.ToLower()));
+
+            if (!string.IsNullOrEmpty(type))
+                query = query.Where(r => r.Type.ToLower().Contains(type.ToLower()));
+
+            var resources = await query.ToListAsync();
+
+            // Project with distance calculation
+            var nearby = resources
+                .Select(r =>
+                {
+                    var distance = GetDistanceInKm(lat, lng, r.Latitude, r.Longitude);
+                    return new ResourceNearbyDto
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        Type = r.Type,
+                        Address = r.Address,
+                        City = r.City,
+                        PostalCode = r.PostalCode,
+                        Latitude = r.Latitude,
+                        Longitude = r.Longitude,
+                        Phone = r.Phone,
+                        WebsiteUrl = r.WebsiteUrl,
+                        OpeningHours = r.OpeningHours,
+                        Capacity = r.Capacity,
+                        IsWheelchairAccessible = r.IsWheelchairAccessible,
+                        IsPetFriendly = r.IsPetFriendly,
+                        LastUpdated = r.LastUpdated,
+                        DistanceKm = Math.Round(distance, 2)
+                    };
+                })
+                .Where(r => r.DistanceKm <= radiusKm);
+
+            // Sorting
+            nearby = sort?.ToLower() switch
+            {
+                "city" => (order == "desc" ? nearby.OrderByDescending(r => r.City) : nearby.OrderBy(r => r.City)),
+                "type" => (order == "desc" ? nearby.OrderByDescending(r => r.Type) : nearby.OrderBy(r => r.Type)),
+                "distance" or _ => (order == "desc" ? nearby.OrderByDescending(r => r.DistanceKm) : nearby.OrderBy(r => r.DistanceKm))
+            };
+
+            // Paging
+            var result = nearby
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return Ok(result);
+        }
+        private double GetDistanceInKm(double lat1, double lon1, double lat2, double lon2)
+        {
+            const double R = 6371; // Earth radius in km
+            var dLat = DegreesToRadians(lat2 - lat1);
+            var dLon = DegreesToRadians(lon2 - lon1);
+
+            var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                    Math.Cos(DegreesToRadians(lat1)) * Math.Cos(DegreesToRadians(lat2)) *
+                    Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            return R * c;
+        }
+        private double DegreesToRadians(double deg) => deg * (Math.PI / 180);
+
     }
+
 }
