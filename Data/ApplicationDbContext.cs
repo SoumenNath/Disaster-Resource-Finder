@@ -11,6 +11,7 @@ namespace DisasterResourceFinder.Data
            : base(options) { }
 
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<ResourceReport> ResourceReports { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

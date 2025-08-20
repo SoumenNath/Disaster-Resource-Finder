@@ -4,6 +4,7 @@ using DisasterResourceFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DisasterResourceFinder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250820215802_AddResourceReports")]
+    partial class AddResourceReports
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,7 +102,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 120,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9257),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7712),
                             Latitude = 43.653199999999998,
                             Longitude = -79.383200000000002,
                             Name = "City Hall Shelter",
@@ -118,7 +121,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 300,
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9323),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7717),
                             Latitude = 43.649999999999999,
                             Longitude = -79.379999999999995,
                             Name = "Downtown Food Bank",
@@ -137,7 +140,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 750,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9325),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7719),
                             Latitude = 45.421500000000002,
                             Longitude = -75.697199999999995,
                             Name = "General Hospital",
@@ -156,7 +159,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 80,
                             IsPetFriendly = true,
                             IsWheelchairAccessible = false,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9327),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7721),
                             Latitude = 45.423000000000002,
                             Longitude = -75.689999999999998,
                             Name = "Community Center Shelter",
@@ -175,7 +178,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 220,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9329),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7723),
                             Latitude = 49.282699999999998,
                             Longitude = -123.1207,
                             Name = "West End Food Support",
@@ -194,7 +197,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 350,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9331),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7725),
                             Latitude = 49.280000000000001,
                             Longitude = -123.11,
                             Name = "Eastside Medical Clinic",
@@ -213,7 +216,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 95,
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9333),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7727),
                             Latitude = 44.648800000000001,
                             Longitude = -63.575200000000002,
                             Name = "Harborview Shelter",
@@ -232,7 +235,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 180,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = false,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9334),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7729),
                             Latitude = 44.652000000000001,
                             Longitude = -63.579999999999998,
                             Name = "North End Food Pantry",
@@ -251,7 +254,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 150,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9336),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7730),
                             Latitude = 44.650500000000001,
                             Longitude = -63.582099999999997,
                             Name = "St. Mary’s Clinic",
@@ -270,7 +273,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 140,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9338),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7733),
                             Latitude = 45.5017,
                             Longitude = -73.567300000000003,
                             Name = "Downtown Women’s Shelter",
@@ -289,7 +292,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 260,
                             IsPetFriendly = true,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9340),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7735),
                             Latitude = 45.515000000000001,
                             Longitude = -73.572999999999993,
                             Name = "Plateau Food Collective",
@@ -308,7 +311,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 280,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9342),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7737),
                             Latitude = 45.450000000000003,
                             Longitude = -73.579999999999998,
                             Name = "Verdun Health Center",
@@ -327,7 +330,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 130,
                             IsPetFriendly = true,
                             IsWheelchairAccessible = false,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9344),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7739),
                             Latitude = 49.895099999999999,
                             Longitude = -97.138400000000004,
                             Name = "Prairie Haven Shelter",
@@ -346,7 +349,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 190,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9346),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7741),
                             Latitude = 49.890000000000001,
                             Longitude = -97.140000000000001,
                             Name = "West Winnipeg Food Hub",
@@ -365,7 +368,7 @@ namespace DisasterResourceFinder.Migrations
                             CurrentOccupancy = 160,
                             IsPetFriendly = false,
                             IsWheelchairAccessible = true,
-                            LastUpdated = new DateTime(2025, 8, 20, 22, 13, 36, 920, DateTimeKind.Utc).AddTicks(9348),
+                            LastUpdated = new DateTime(2025, 8, 20, 21, 58, 2, 608, DateTimeKind.Utc).AddTicks(7743),
                             Latitude = 49.884,
                             Longitude = -97.123999999999995,
                             Name = "St. Boniface Clinic",
@@ -512,15 +515,15 @@ namespace DisasterResourceFinder.Migrations
                         {
                             Id = "100",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6d8d4def-ad94-4aed-836a-49d26857bfe4",
+                            ConcurrencyStamp = "dd1f82ef-d9f6-4bf4-a431-0eb8730e0898",
                             Email = "admin@demo.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@DEMO.COM",
                             NormalizedUserName = "ADMIN@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH6ZvqYGErkRdlfvNXOR7DFEkj/QsJByEssGZ/AxeO6FJsDE3trH8QnwSxrca0PDCw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP3Vk7P/2oVN8tQH9qXSe0/Tr0B39DLuDkYlHuqFx5OfWqijMx6k+ZI3dgluN6pOoQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f9d2bc2-401f-4cde-afc8-873cca04874a",
+                            SecurityStamp = "869cec50-508b-47f8-93e7-35358ab48d4d",
                             TwoFactorEnabled = false,
                             UserName = "admin@demo.com"
                         });
@@ -628,9 +631,6 @@ namespace DisasterResourceFinder.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsApproved")
-                        .HasColumnType("bit");
 
                     b.Property<string>("ReportType")
                         .IsRequired()
