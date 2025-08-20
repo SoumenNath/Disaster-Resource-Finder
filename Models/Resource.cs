@@ -38,5 +38,9 @@ namespace DisasterResourceFinder.Models
         public bool IsPetFriendly { get; set; }
 
         public DateTime LastUpdated { get; set; }
+
+        public int CurrentOccupancy { get; set; } = 0;
+
+        public int? AvailableSpots => Capacity.HasValue ? Capacity - CurrentOccupancy : null;
     }
 }

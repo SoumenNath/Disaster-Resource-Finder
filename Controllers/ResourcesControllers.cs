@@ -17,6 +17,38 @@ namespace DisasterResourceFinder.Controllers
             _context = context;
         }
 
+        [HttpPost("{id}/checkin")]
+        [Authorize]
+        public async Task<IActionResult> CheckIn(int id)
+        {
+            var resource = await _context.Resources.FindAsync(id);
+            if (resource == null) return NotFound("Resource not found");
+
+            if (resource.Capacity.HasValue && resource.CurrentOccupancy + 1 > resource.Capacity)
+                return BadRequest("Not enough available capacity.");
+
+            resource.CurrentOccupancy++;
+            resource.LastUpdated = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+            return Ok(resource);
+        }
+
+
+        [HttpPost("{id}/checkout")]
+        [Authorize]
+        public async Task<IActionResult> CheckOut(int id)
+        {
+            var resource = await _context.Resources.FindAsync(id);
+            if (resource == null) return NotFound("Resource not found");
+
+            resource.CurrentOccupancy--;
+            resource.LastUpdated = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+            return Ok(resource);
+        }
+
         // GET: api/resources?city=Tor&type=shelt&page=1&pageSize=5&sort=city&order=desc
         // ✅ Anyone can search/list
         [HttpGet]
@@ -145,6 +177,7 @@ namespace DisasterResourceFinder.Controllers
         }
         // GET: api/resources/nearby?lat=43.651&lng=-79.383&radiusKm=5
         [HttpGet("nearby")]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<ResourceNearbyDto>>> GetNearbyResources(
         double lat,
         double lng,
@@ -189,7 +222,8 @@ namespace DisasterResourceFinder.Controllers
                         IsWheelchairAccessible = r.IsWheelchairAccessible,
                         IsPetFriendly = r.IsPetFriendly,
                         LastUpdated = r.LastUpdated,
-                        DistanceKm = Math.Round(distance, 2)
+                        DistanceKm = Math.Round(distance, 2),
+                        AvailableSpots = r.Capacity.HasValue ? r.Capacity - r.CurrentOccupancy : null,
                     };
                 })
                 .Where(r => r.DistanceKm <= radiusKm);
@@ -216,6 +250,7 @@ namespace DisasterResourceFinder.Controllers
             var dLat = DegreesToRadians(lat2 - lat1);
             var dLon = DegreesToRadians(lon2 - lon1);
 
+            // Haversine formula
             var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
                     Math.Cos(DegreesToRadians(lat1)) * Math.Cos(DegreesToRadians(lat2)) *
                     Math.Sin(dLon / 2) * Math.Sin(dLon / 2);

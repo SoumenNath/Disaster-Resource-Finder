@@ -17,8 +17,8 @@
         public bool IsWheelchairAccessible { get; set; }
         public bool IsPetFriendly { get; set; }
         public DateTime LastUpdated { get; set; }
-
-        // NEW
         public double DistanceKm { get; set; }
+        public int CurrentOccupancy { get; set; }
+        public int? AvailableSpots { get; set; }
     }
 }
