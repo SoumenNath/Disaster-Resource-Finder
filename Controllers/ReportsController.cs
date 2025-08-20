@@ -1,4 +1,5 @@
-﻿using DisasterResourceFinder.Data;
+﻿using System.Security.Claims;
+using DisasterResourceFinder.Data;
 using DisasterResourceFinder.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -20,15 +21,25 @@ public class ReportsController : ControllerBase
 
     // GET: api/reports?resourceId=5
     [HttpGet]
-    [AllowAnonymous] // anyone can view reports
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<ResourceReportDto>>> GetReports([FromQuery] int? resourceId)
     {
         var query = _context.ResourceReports
             .Include(r => r.User)
             .AsQueryable();
 
+        // Filter by resourceId if provided
         if (resourceId.HasValue)
             query = query.Where(r => r.ResourceId == resourceId.Value);
+
+        // Check admin role from JWT claims
+        bool isAdmin = User.Claims.Any(c => c.Type == ClaimTypes.Role && c.Value == "Admin");
+
+        // Only admins see all reports; everyone else sees only approved
+        if (!isAdmin)
+        {
+            query = query.Where(r => r.IsApproved);
+        }
 
         var reports = await query
             .OrderByDescending(r => r.CreatedAt)
@@ -46,6 +57,7 @@ public class ReportsController : ControllerBase
 
         return reports;
     }
+
 
     // POST: api/reports
     [HttpPost]

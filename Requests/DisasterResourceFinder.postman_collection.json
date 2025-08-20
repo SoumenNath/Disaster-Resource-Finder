@@ -3,6 +3,10 @@
     "password": "User@123"
 }
 {
+    "email": "admin@disasterfinder.com",
+    "password": "ChangeMe123!"
+}
+{
     "email": "user1@test.com",
     "password": "User@123"
 }

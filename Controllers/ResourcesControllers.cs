@@ -17,6 +17,7 @@ namespace DisasterResourceFinder.Controllers
             _context = context;
         }
 
+        //POST: api/resources/5/checkin
         [HttpPost("{id}/checkin")]
         [Authorize]
         public async Task<IActionResult> CheckIn(int id)
@@ -34,7 +35,7 @@ namespace DisasterResourceFinder.Controllers
             return Ok(resource);
         }
 
-
+        //POST: api/resources/5/checkout
         [HttpPost("{id}/checkout")]
         [Authorize]
         public async Task<IActionResult> CheckOut(int id)
