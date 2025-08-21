@@ -1,1 +1,2 @@
 delete DisasterResourceFinder.csproj.Backup.tmp 
+check which features to add
