@@ -482,3 +482,14 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+# Blazor WebAssembly build output
+wwwroot/_framework/
+wwwroot/service-worker-assets.js
+
+# PWA published service worker (optional)
+wwwroot/service-worker.published.js
+
+# Optional: ignore local dev config if you store secrets
+appsettings.Development.json
